@@ -1,0 +1,13 @@
+[mist]
+# Mist API base URL. Default global cloud:
+base_url = https://api.mist.com
+
+# Organization API token (do NOT include the word 'Token' here)
+api_token = YOUR_API_TOKEN_HERE
+
+# Mist Org ID (UUID)
+org_id = YOUR_ORG_ID_HERE
+
+# Optional: default setting for prompt to move devices already assigned to a different site
+# true or false
+reassign_existing_default = false

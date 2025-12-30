@@ -1,0 +1,44 @@
+# ---- Secrets / local config ----
+config.ini
+*.env
+
+# ---- Mist-specific local files ----
+Test_Claim_Codes.txt
+
+# ---- Data files ----
+*.csv
+*.xlsx
+
+# IDEs
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+dist/
+build/
+*.egg-info/
+
+# ---- OS junk ----
+.DS_Store
+Thumbs.db
+
+# ---- Logs ----
+*.log
+
+# Secrets / keys
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+*.env
+.env
+config.ini
+*.kubeconfig
+

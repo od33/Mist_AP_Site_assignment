@@ -1,0 +1,15 @@
+
+<!doctype html>
+<html>
+<body>
+<h3>Results for {{ site_name }}</h3>
+<p>Total {{ summary.total }} | Success {{ summary.success }} | Failed {{ summary.failed }}</p>
+<a href="/download/{{ out_file }}">Download results</a>
+<table border="1">
+<tr>{% for c in columns %}<th>{{ c }}</th>{% endfor %}</tr>
+{% for r in rows %}
+<tr>{% for c in columns %}<td>{{ r[c] }}</td>{% endfor %}</tr>
+{% endfor %}
+</table>
+</body>
+</html>

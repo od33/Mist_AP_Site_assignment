@@ -1,0 +1,40 @@
+
+<!doctype html>
+<html>
+<head>
+  <title>Mist AP Site Import</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    .card { max-width: 820px; padding: 18px; border: 1px solid #ddd; border-radius: 10px; }
+    .muted { color: #666; }
+    .err { color: #b00020; }
+    ul { margin-top: 6px; }
+    button { padding: 8px 14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Mist AP Site Import</h2>
+    <p class="muted">Upload a CSV or XLSX file, select a site, and assign APs by Serial Number.</p>
+
+    <h4>Expected fields (header row)</h4>
+    <ul>
+      <li><b>Floor #</b></li>
+      <li><b>WAP Hostname</b></li>
+      <li><b>Serial Number</b></li>
+      <li><b>Mac Address</b></li>
+    </ul>
+    <p class="muted">Headers are case-insensitive and whitespace is ignored.</p>
+
+    {% for m in get_flashed_messages() %}
+      <p class="err">{{ m }}</p>
+    {% endfor %}
+
+    <form method="post" action="/upload" enctype="multipart/form-data">
+      <input type="file" name="file" accept=".csv,.xlsx" required>
+      <br><br>
+      <button type="submit">Upload</button>
+    </form>
+  </div>
+</body>
+</html>

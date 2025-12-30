@@ -1,0 +1,30 @@
+
+<!doctype html>
+<html>
+<head>
+  <title>Select Site</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    .card { max-width: 820px; padding: 18px; border: 1px solid #ddd; border-radius: 10px; }
+    button { padding: 8px 14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h3>Select target site</h3>
+    <p>Uploaded file: <b>{{ filename }}</b></p>
+    <form method="post" action="/run">
+      <input type="hidden" name="filename" value="{{ filename }}">
+      <label>Target site:</label><br><br>
+      <select name="site_id" required>
+        {% for s in sites %}
+          <option value="{{ s['id'] }}">{{ s.get('name','<no name>') }}</option>
+        {% endfor %}
+      </select>
+      <br><br>
+      <button type="submit">Run assignment</button>
+    </form>
+    <p style="color:#666">All-or-none: if any row is invalid, no APs are assigned.</p>
+  </div>
+</body>
+</html>

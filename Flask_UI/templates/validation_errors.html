@@ -1,0 +1,62 @@
+
+<!doctype html>
+<html>
+<head>
+  <title>Validation Errors</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    .card { max-width: 1100px; padding: 18px; border: 1px solid #ddd; border-radius: 10px; }
+    .err { color: #b00020; font-weight: bold; }
+    table { border-collapse: collapse; width: 100%; margin-top: 14px; font-size: 13px; }
+    th, td { border: 1px solid #ddd; padding: 8px; vertical-align: top; }
+    th { background: #fafafa; }
+    code { background:#f4f4f4; padding: 2px 4px; border-radius: 4px; }
+    a.button { display:inline-block; padding:8px 12px; border:1px solid #333; border-radius: 8px; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2 class="err">Import blocked — fix the file and re-upload</h2>
+    <p>{{ message }}</p>
+
+    <h4>Expected fields (header row)</h4>
+    <ul>
+      {% for f in required_fields %}
+        <li><code>{{ f }}</code></li>
+      {% endfor %}
+    </ul>
+
+    <p class="err">No APs were assigned because at least one row is invalid (all-or-none).</p>
+
+{% if report_file %}
+<p style="margin-top:10px"><a class="button" href="/download/{{ report_file }}">Download validation report (CSV)</a></p>
+{% endif %}
+
+
+    <table>
+      <thead>
+        <tr>
+          <th>Row #</th>
+          <th>Field</th>
+          <th>Value</th>
+          <th>Problem</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in issues %}
+          <tr>
+            <td>{{ i.row }}</td>
+            <td>{{ i.field }}</td>
+            <td>{{ i.value }}</td>
+            <td>{{ i.message }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <p style="margin-top:16px">
+      <a class="button" href="/">Back to upload</a>
+    </p>
+  </div>
+</body>
+</html>

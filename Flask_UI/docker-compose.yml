@@ -1,0 +1,10 @@
+services:
+  flaskui:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./config.ini:/app/config.ini:ro
+      - ./data:/app/data
+    environment:
+      - FLASK_SECRET_KEY=change-me

@@ -1,0 +1,5 @@
+
+[mist]
+base_url = https://api.ac2.mist.com
+api_token = YOUR_API_TOKEN
+org_id = YOUR_ORG_ID
